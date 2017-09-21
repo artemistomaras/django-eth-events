@@ -39,6 +39,7 @@ class Decoder(Singleton):
         for item in abi:
             if item.get(u'name'):
                 method_id = self.get_method_id(item)
+                method_id = method_id.decode('utf-8')
                 self.methods[method_id] = item
                 added += 1
         return added
@@ -52,6 +53,7 @@ class Decoder(Singleton):
         for item in abis:
             if item.get(u'name'):
                 method_id = self.get_method_id(item)
+                method_id = method_id.decode('utf-8')
                 if self.methods.get(method_id):
                     del self.methods[method_id]
 
