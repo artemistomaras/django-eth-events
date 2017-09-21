@@ -96,3 +96,4 @@ django_eth_events/bin/
 django_eth_events/bitcoin/
 django_eth_events/include/
 django_eth_events/local/
+/.project
