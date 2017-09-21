@@ -1,4 +1,5 @@
 # from celery.utils.log import get_task_logger
+import codecs
 from eth_abi import decode_abi
 from ethereum.utils import remove_0x_head
 from ethereum.utils import sha3
@@ -25,7 +26,7 @@ class Decoder(Singleton):
         else:
             method_header = "{}()".format(item[u'name'])
 
-        return sha3(method_header).encode('hex')
+        return codecs.encode(sha3(method_header), 'hex_codec')
 
     def add_abi(self, abi):
         """
