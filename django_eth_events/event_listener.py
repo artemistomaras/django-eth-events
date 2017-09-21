@@ -69,10 +69,10 @@ class EventListener(Singleton):
         addresses = None
         try:
             if contract.get('ADDRESSES'):
-                addresses = contract['ADDRESSES']
+                addresses = [address.lower() for address in contract['ADDRESSES']]
             elif contract.get('ADDRESSES_GETTER'):
                 addresses_getter = import_string(contract['ADDRESSES_GETTER'])
-                addresses = addresses_getter().get_addresses()
+                addresses = [address.lower() for address in addresses_getter().get_addresses()]
         except Exception as e:
             logger.error(e)
             raise LookupError("Could not retrieve watched addresses for contract {}".format(contract))
