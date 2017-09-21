@@ -37,7 +37,7 @@ class Decoder(Singleton):
         """
         added = 0
         for item in abi:
-            if item.get(u'name'):
+            if item.get(u'name') and item.get(u'type') == u'event':
                 method_id = self.get_method_id(item)
                 method_id = method_id.decode('utf-8')
                 self.methods[method_id] = item
